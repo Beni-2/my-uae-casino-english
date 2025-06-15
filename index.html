@@ -1,0 +1,477 @@
+																											<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UAE Integrated Resort Market: A New Era of Entertainment</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .flowchart-node {
+            border: 2px solid #0077B6;
+            background-color: #CAF0F8;
+            color: #004AAD;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            font-weight: 600;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            min-height: 100px; /* Ensures consistent height for all nodes */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .flowchart-connector {
+            width: 2px;
+            background-color: #0077B6;
+            margin: 0 auto;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #0077B6;
+            border: 4px solid #CAF0F8;
+        }
+        /* Specific styles for flowchart lines to ensure precise alignment */
+        .branch-connector-container, .merge-connector-container {
+            position: relative;
+            width: 100%;
+            min-height: 70px; /* Increased height for better visual separation */
+            display: flex; /* Use flexbox to center inner elements */
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        /* Line from Node 3 down to horizontal line */
+        .branch-line-vertical-from-node3 {
+            position: absolute;
+            top: 0; 
+            left: 50%;
+            transform: translateX(-50%);
+            height: 35px; /* Half the min-height of 70px */
+            width: 2px;
+            background-color: #0077B6;
+        }
+
+        /* Horizontal line connecting the vertical lines */
+        .branch-line-horizontal {
+            position: absolute;
+            top: 35px; /* Position at the midpoint of the container */
+            left: 16.66%; /* Start from the left-most vertical line's position */
+            width: 66.67%; /* Span from 16.66% to 83.33% */
+            height: 2px;
+            background-color: #0077B6;
+        }
+
+        /* Vertical lines from horizontal line down to 4a, 4b, 4c */
+        .branch-line-vertical-to-nodes4 {
+            position: absolute;
+            top: 35px; /* Start from the horizontal line */
+            width: 2px;
+            background-color: #0077B6;
+            height: 35px; /* Go down remaining half */
+            transform: translateX(-50%); /* Center under their specific horizontal points */
+        }
+
+        /* Vertical lines from 4a, 4b, 4c up to horizontal line */
+        .merge-line-vertical-from-nodes4 {
+            position: absolute;
+            top: 0; /* Start from top of container (bottom of node 4) */
+            width: 2px;
+            background-color: #0077B6;
+            height: 35px; /* Go up halfway */
+            transform: translateX(-50%); /* Center under their specific horizontal points */
+        }
+
+        /* Horizontal line connecting the vertical lines from 4a, 4b, 4c */
+        .merge-line-horizontal {
+            position: absolute;
+            top: 35px; /* Position at the midpoint of the container */
+            left: 16.66%; /* Start from the left-most vertical line's position */
+            width: 66.67%; /* Span from 16.66% to 83.33% */
+            height: 2px;
+            background-color: #0077B6;
+        }
+
+        /* Line from horizontal line down to Node 5 */
+        .merge-line-vertical-to-node5 {
+            position: absolute;
+            top: 35px; /* Start from the horizontal line */
+            left: 50%;
+            transform: translateX(-50%);
+            height: 35px; /* Go down remaining half */
+            width: 2px;
+            background-color: #0077B6;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <div class="container mx-auto p-4 md:p-8">
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-[#004AAD] mb-2">A New Entertainment Frontier</h1>
+            <p class="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto">An analysis of the strategic roadmap and market potential for establishing Integrated Resorts & Casinos in the United Arab Emirates.</p>
+        </header>
+
+        <main class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+            <section class="lg:col-span-2 bg-white rounded-lg shadow-lg p-6 md:p-8 flex flex-col md:flex-row items-center justify-around">
+                <div class="text-center md:text-left mb-6 md:mb-0">
+                    <h2 class="text-2xl font-bold text-[#004AAD] mb-2">Projected Annual Market Value by 2030</h2>
+                    <p class="text-6xl font-extrabold text-[#0077B6]">$10.5 Billion</p>
+                    <p class="text-md text-gray-500 mt-2">Driven by tourism, hospitality, and a new world-class gaming sector.</p>
+                </div>
+                <div class="w-full max-w-xs md:max-w-sm">
+                    <h3 class="text-center text-xl font-bold text-[#004AAD] mb-3">Contribution to Non-Oil GDP</h3>
+                    <div class="chart-container h-64 md:h-72">
+                         <canvas id="gdpContributionChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lg:col-span-2 bg-white rounded-lg shadow-lg p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-center text-[#004AAD] mb-4">Navigating the Regulatory Maze</h2>
+                <p class="text-center text-gray-600 max-w-3xl mx-auto mb-8">The critical path to establishing a resort casino in the UAE involves a multi-stage, rigorous regulatory and licensing process, managed by federal and emirate-level authorities. This structured approach ensures compliance, social responsibility, and economic viability.</p>
+                <div class="flex flex-col items-center">
+                    <!-- Restored Nodes 1 and 2 -->
+                    <div class="flowchart-node w-full md:w-1/2">1. Project Feasibility & Investor Alignment</div>
+                    <div class="flowchart-connector h-8"></div>
+                    <div class="flowchart-node w-full md:w-1/2">2. Submission to General Commercial Gaming Regulatory Authority (GCGRA)</div>
+                    <div class="flowchart-connector h-8"></div>
+                    <div class="flowchart-node w-full md:w-1/2">3. Comprehensive GCGRA Review</div>
+
+                    <!-- Branching from Node 3 to 4a, 4b, 4c -->
+                    <div class="branch-connector-container mt-2">
+                        <!-- Vertical line down from Node 3 to horizontal meeting point -->
+                        <div class="branch-line-vertical-from-node3"></div>
+                        
+                        <!-- Horizontal branching line -->
+                        <div class="branch-line-horizontal"></div>
+
+                        <!-- Vertical lines down from horizontal line to 4a, 4b, 4c positions -->
+                        <div class="branch-line-vertical-to-nodes4" style="left: 16.66%;"></div> <!-- For 4a -->
+                        <div class="branch-line-vertical-to-nodes4" style="left: 50%;"></div> <!-- For 4b -->
+                        <div class="branch-line-vertical-to-nodes4" style="left: 83.33%;"></div> <!-- For 4c -->
+                    </div>
+
+                    <div class="w-full flex flex-col md:flex-row justify-center items-start gap-4">
+                        <div class="w-full md:w-1/3 flex flex-col items-center">
+                             <div class="flowchart-node w-full">4a. Emirate-Level Tourism Authority Approval</div>
+                        </div>
+                        <div class="w-full md:w-1/3 flex flex-col items-center">
+                            <div class="flowchart-node w-full">4b. Economic Development Department Permit</div>
+                        </div>
+                        <div class="w-full md:w-1/3 flex flex-col items-center">
+                            <div class="flowchart-node w-full">4c. Municipal & Civil Defence Clearances</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Merging from 4a, 4b, 4c to Node 5 -->
+                    <div class="merge-connector-container mb-2">
+                        <!-- Vertical lines up from 4a, 4b, 4c positions to horizontal meeting point -->
+                        <div class="merge-line-vertical-from-nodes4" style="left: 16.66%;"></div> <!-- From 4a -->
+                        <div class="merge-line-vertical-from-nodes4" style="left: 50%;"></div> <!-- From 4b -->
+                        <div class="merge-line-vertical-from-nodes4" style="left: 83.33%;"></div> <!-- From 4c -->
+                        
+                        <!-- Horizontal merging line -->
+                        <div class="merge-line-horizontal"></div>
+
+                        <!-- Vertical line down from horizontal meeting point to Node 5 -->
+                        <div class="merge-line-vertical-to-node5"></div>
+                    </div>
+
+                    <div class="flowchart-node w-full md:w-1/2">5. Provisional Gaming License Issued</div>
+                    <div class="flowchart-connector h-8"></div>
+                    <div class="flowchart-node w-full md:w-1/2 bg-[#0077B6] text-white">6. Construction & Operational Compliance Monitoring</div>
+                </div>
+            </section>
+            
+            <section class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-[#004AAD] mb-2">Investment Landscape</h2>
+                <p class="text-gray-600 mb-6">Capital investment for an integrated resort is substantial, with the majority allocated to physical construction and state-of-the-art interior finishing. Technology and regulatory fees represent significant secondary costs.</p>
+                 <div class="chart-container">
+                    <canvas id="investmentChart"></canvas>
+                </div>
+            </section>
+
+            <section class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-[#004AAD] mb-2">Projected Revenue Growth</h2>
+                <p class="text-gray-600 mb-6">Following a successful launch, revenue is projected to grow steadily, driven by increasing international tourism and the ramp-up of non-gaming amenities. The first five years are critical for establishing market position.</p>
+                <div class="chart-container">
+                    <canvas id="revenueChart"></canvas>
+                </div>
+            </section>
+
+            <section class="lg:col-span-2 bg-white rounded-lg shadow-lg p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-center text-[#004AAD] mb-4">The Blueprint for Success: Project Timeline</h2>
+                <p class="text-center text-gray-600 max-w-3xl mx-auto mb-10">The journey from concept to grand opening is a multi-year endeavor, typically spanning 48-60 months. Each phase has critical dependencies and requires meticulous project management to mitigate delays.</p>
+                <div class="relative pl-10 border-l-4 border-[#90E0EF]">
+                    <div class="mb-10 ml-4 relative timeline-item">
+                        <h3 class="text-xl font-bold text-[#004AAD]">Phase 1: Feasibility & Planning (Months 1-6)</h3>
+                        <p class="text-gray-600">Market research, site selection, initial design concepts, and securing preliminary investment commitments.</p>
+                    </div>
+                    <div class="mb-10 ml-4 relative timeline-item">
+                        <h3 class="text-xl font-bold text-[#004AAD]">Phase 2: Licensing & Approvals (Months 7-18)</h3>
+                        <p class="text-gray-600">Navigating the comprehensive GCGRA and local emirate approval processes. This is a critical, document-intensive phase.</p>
+                    </div>
+                    <div class="mb-10 ml-4 relative timeline-item">
+                        <h3 class="text-xl font-bold text-[#004AAD]">Phase 3: Design & Construction (Months 19-48)</h3>
+                        <p class="text-gray-600">Detailed architectural design, contractor procurement, and full-scale construction of the resort and casino facilities.</p>
+                    </div>
+                    <div class="ml-4 relative timeline-item">
+                        <h3 class="text-xl font-bold text-[#004AAD]">Phase 4: Operational Ramp-Up & Launch (Months 49-60)</h3>
+                        <p class="text-gray-600">Staff recruitment and training, systems integration, marketing campaigns, soft opening, and grand opening.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-[#004AAD] mb-2">Hypothetical Competitive Arena</h2>
+                <p class="text-gray-600 mb-6">The UAE market is expected to attract tier-one global operators. Initial market share will be influenced by brand recognition, resort scale, and unique non-gaming attractions offered.</p>
+                <div class="chart-container">
+                    <canvas id="marketShareChart"></canvas>
+                </div>
+            </section>
+            
+            <section class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-[#004AAD] mb-2">Target Visitor Profile Analysis</h2>
+                <p class="text-gray-600 mb-6">Success hinges on appealing to a diverse visitor base. While international tourists are the primary target, affluent GCC residents and MICE travelers are crucial secondary markets with different priorities.</p>
+                <div class="chart-container">
+                    <canvas id="visitorProfileChart"></canvas>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="text-center mt-12 text-gray-500 text-sm">
+            <p>&copy; 2025 Market Research & Insights Group. All rights reserved.</p>
+            <p class="mt-1">This infographic is for illustrative purposes based on analysis of the "Resort Casino Setup in UAE" roadmap.</p>
+        </footer>
+    </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const brilliantBlues = {
+        dark: '#004AAD',
+        medium: '#0077B6',
+        light: '#90E0EF',
+        veryLight: '#CAF0F8',
+        text: '#374151',
+        grid: '#E5E7EB'
+    };
+
+    const tooltipTitleCallback = (tooltipItems) => {
+        const item = tooltipItems[0];
+        let label = item.chart.data.labels[item.dataIndex];
+        if (Array.isArray(label)) {
+            return label.join(' ');
+        }
+        return label;
+    };
+
+    const commonChartOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                labels: {
+                    color: brilliantBlues.text,
+                    font: {
+                        family: "'Inter', sans-serif"
+                    }
+                }
+            },
+            tooltip: {
+                callbacks: {
+                    title: tooltipTitleCallback
+                }
+            }
+        },
+        scales: {
+            y: {
+                ticks: { color: brilliantBlues.text },
+                grid: { color: brilliantBlues.grid }
+            },
+            x: {
+                ticks: { color: brilliantBlues.text },
+                grid: { display: false }
+            }
+        }
+    };
+    
+    function wrapLabel(str, maxWidth) {
+        if (str.length <= maxWidth) {
+            return str;
+        }
+        const words = str.split(' ');
+        let lines = [];
+        let currentLine = '';
+        words.forEach(word => {
+            if ((currentLine + ' ' + word).trim().length > maxWidth && currentLine.length > 0) {
+                lines.push(currentLine);
+                currentLine = word;
+            } else {
+                currentLine = (currentLine + ' ' + word).trim();
+            }
+        });
+        if (currentLine.length > 0) {
+            lines.push(currentLine);
+        }
+        return lines;
+    }
+
+    new Chart(document.getElementById('gdpContributionChart').getContext('2d'), {
+        type: 'doughnut',
+        data: {
+            labels: ['Integrated Resorts', 'Other Tourism Sectors'],
+            datasets: [{
+                data: [18, 82],
+                backgroundColor: [brilliantBlues.medium, brilliantBlues.light],
+                borderColor: ['#FFFFFF'],
+                borderWidth: 4
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { position: 'bottom', labels: { color: brilliantBlues.text } },
+                tooltip: { callbacks: { title: tooltipTitleCallback } }
+            }
+        }
+    });
+
+    new Chart(document.getElementById('investmentChart').getContext('2d'), {
+        type: 'bar',
+        data: {
+            labels: ['Resort A', 'Resort B (Conceptual)'],
+            datasets: [{
+                label: 'Construction & Design',
+                data: [2500, 3200],
+                backgroundColor: brilliantBlues.dark,
+            }, {
+                label: 'Technology & Gaming Systems',
+                data: [800, 1000],
+                backgroundColor: brilliantBlues.medium,
+            }, {
+                label: 'Licensing & Legal',
+                data: [500, 600],
+                backgroundColor: brilliantBlues.light,
+            }]
+        },
+        options: { ...commonChartOptions, scales: { x: { stacked: true }, y: { stacked: true, ticks: { callback: (val) => `$${val/1000}B` } } } }
+    });
+
+    new Chart(document.getElementById('revenueChart').getContext('2d'), {
+        type: 'line',
+        data: {
+            labels: ['Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5'],
+            datasets: [{
+                label: 'Gaming Revenue',
+                data: [1.8, 2.5, 3.1, 3.5, 4.0],
+                borderColor: brilliantBlues.dark,
+                backgroundColor: brilliantBlues.dark + '33',
+                fill: true,
+                tension: 0.4
+            }, {
+                label: 'Non-Gaming Revenue',
+                data: [1.2, 1.9, 2.8, 3.6, 4.5],
+                borderColor: brilliantBlues.medium,
+                backgroundColor: brilliantBlues.medium + '33',
+                fill: true,
+                tension: 0.4
+            }]
+        },
+        options: { ...commonChartOptions, scales: { ...commonChartOptions.scales, y: { ticks: { callback: (val) => `$${val}B` } } } }
+    });
+    
+    const marketShareLabelsRaw = ['Wynn Al Marjan Island Resort', 'MGM International Entertainment', 'Caesars Palace Bluewaters', 'Hard Rock Hotels & Casinos', 'Las Vegas Sands Corporation'];
+    const marketShareLabels = marketShareLabelsRaw.map(label => wrapLabel(label, 16));
+
+    new Chart(document.getElementById('marketShareChart').getContext('2d'), {
+        type: 'bar',
+        data: {
+            labels: marketShareLabels,
+            datasets: [{
+                label: 'Hypothetical Market Share (%)',
+                data: [35, 25, 20, 15, 5],
+                backgroundColor: [brilliantBlues.dark, brilliantBlues.medium, brilliantBlues.light, brilliantBlues.veryLight, '#A0AEC0'],
+                borderColor: '#FFFFFF',
+                borderWidth: 2
+            }]
+        },
+        options: { ...commonChartOptions, indexAxis: 'y', plugins: { legend: { display: false }, tooltip: { callbacks: { title: tooltipTitleCallback } } } }
+    });
+
+    new Chart(document.getElementById('visitorProfileChart').getContext('2d'), {
+        type: 'radar',
+        data: {
+            labels: ['Gaming', 'Luxury Retail', 'Fine Dining', 'Live Entertainment', 'MICE Facilities'],
+            datasets: [{
+                label: 'International Tourist',
+                data: [9, 7, 8, 8, 6],
+                borderColor: brilliantBlues.dark,
+                backgroundColor: brilliantBlues.dark + '40'
+            }, {
+                label: 'GCC Resident',
+                data: [7, 9, 9, 6, 4],
+                borderColor: brilliantBlues.medium,
+                backgroundColor: brilliantBlues.medium + '40'
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { position: 'top', labels: { color: brilliantBlues.text } },
+                 tooltip: { callbacks: { title: tooltipTitleCallback } }
+            },
+            scales: {
+                r: {
+                    angleLines: { color: brilliantBlues.grid },
+                    grid: { color: brilliantBlues.grid },
+                    pointLabels: {
+                        color: brilliantBlues.text,
+                        font: { size: 12, family: "'Inter', sans-serif" }
+                    },
+                    ticks: {
+                        backdropColor: 'rgba(255, 255, 255, 0.75)',
+                        color: brilliantBlues.text
+                    }
+                }
+            }
+        }
+    });
+
+});
+</script>
+</body>
+</html>
+																													
